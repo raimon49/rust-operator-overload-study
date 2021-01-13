@@ -1,4 +1,5 @@
 use std::ops::Add;
+use std::ops::Neg;
 
 pub struct Complex<T> {
     pub re: T,
@@ -23,6 +24,15 @@ impl<L, R, O> Add<Complex<R>> for Complex<L>
     type Output = Complex<O>;
     fn add(self, rhs: Complex<R>) -> Self::Output {
         Complex { re: self.re + rhs.re, im: self.im + rhs.im }
+    }
+}
+
+impl<T, O> Neg for Complex<T>
+    where T: Neg<Output=O>
+{
+    type Output = Complex<O>;
+    fn neg(self) -> Complex<O> {
+        Complex { re: -self.re, im: -self.im }
     }
 }
 
