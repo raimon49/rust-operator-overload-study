@@ -7,6 +7,7 @@ pub struct Complex<T> {
 
 }
 
+// 算術演算子「+」のオーバーロード
 // impl<T> Add for Complex<T>
 //     where T: Add<Output=T>
 // {
@@ -27,6 +28,7 @@ impl<L, R, O> Add<Complex<R>> for Complex<L>
     }
 }
 
+// 単項演算子「-」のオーバーロード
 impl<T, O> Neg for Complex<T>
     where T: Neg<Output=O>
 {
