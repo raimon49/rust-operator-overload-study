@@ -1,6 +1,7 @@
 use std::ops::Add;
 use std::ops::Neg;
 
+#[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
     pub re: T,
     pub im: T,
