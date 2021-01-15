@@ -1,5 +1,6 @@
 use std::ops::Add;
 use std::ops::Neg;
+use std::ops::AddAssign;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
@@ -36,6 +37,16 @@ impl<T, O> Neg for Complex<T>
     type Output = Complex<O>;
     fn neg(self) -> Complex<O> {
         Complex { re: -self.re, im: -self.im }
+    }
+}
+
+// 複合代入演算子「+=」のオーバーロード
+impl<T> AddAssign for Complex<T>
+    where T: AddAssign<T>
+{
+    fn add_assign(&mut self, rhs: Complex<T>) {
+        self.re += rhs.re;
+        self.im += rhs.im;
     }
 }
 
