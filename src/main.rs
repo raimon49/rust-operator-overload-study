@@ -51,6 +51,8 @@ impl<T> AddAssign for Complex<T>
     }
 }
 
+// std::cmp::PartialEqのeqメソッドとneメソッドのうち、neはデフォルト実装を持つ
+// よってeqメソッドのみ実装することでComplex型は「==」で比較可能になる
 impl<T: PartialEq> PartialEq for Complex<T> {
     fn eq(&self, other: &Complex<T>) -> bool {
         self.re == other.re && self.im == other.im
