@@ -1,6 +1,7 @@
 use std::ops::Add;
 use std::ops::Neg;
 use std::ops::AddAssign;
+use std::cmp::PartialEq;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
@@ -47,6 +48,12 @@ impl<T> AddAssign for Complex<T>
     fn add_assign(&mut self, rhs: Complex<T>) {
         self.re += rhs.re;
         self.im += rhs.im;
+    }
+}
+
+impl<T: PartialEq> PartialEq for Complex<T> {
+    fn eq(&self, other: &Complex<T>) -> bool {
+        self.re == other.re && self.im == other.im
     }
 }
 
