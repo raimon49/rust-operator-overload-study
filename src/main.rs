@@ -64,4 +64,10 @@ fn main() {
     // a + bをa.add(b)と関数呼び出しでも書ける
     assert_eq!(4.125f32.add(5.75), 9.875);
     assert_eq!(10.add(20), 10 + 20);
+
+    // std::cmp::PartialEqトレイトを実装している型は比較がassert_eq/assert_neで比較が可能
+    // #[derive(PartialEq)]でderive属性に追加しても、ほぼ同じコードが生成される
+    let x = Complex { re: 5, im: 2 };
+    let y = Complex { re: 2, im: 5 };
+    assert_ne!(x, y);
 }
