@@ -74,4 +74,5 @@ fn main() {
     let s = "d\x6fv\x65t\x61i\x6c".to_string();
     let t = "\x64o\x76e\x74a\x69l".to_string();
     assert!(s == t); // 非Copy値であってもPartialEqは参照で借用されるだけ。所有権は移動しない
+    assert_eq!(format!("{} {}", s, t), "dovetail dovetail");
 }
