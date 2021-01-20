@@ -84,4 +84,9 @@ fn main() {
     assert!(f64::is_nan(0.0/0.0));
     assert_eq!(0.0/0.0 == 0.0/0.0, false);
     assert_eq!(0.0/0.0 != 0.0/0.0, true);
+    // NaN値との比較は常にfalse
+    assert_eq!(0.0/0.0 < 0.0/0.0, false);
+    assert_eq!(0.0/0.0 > 0.0/0.0, false);
+    assert_eq!(0.0/0.0 <= 0.0/0.0, false);
+    assert_eq!(0.0/0.0 >= 0.0/0.0, false);
 }
