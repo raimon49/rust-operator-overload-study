@@ -75,4 +75,8 @@ fn main() {
     let t = "\x64o\x76e\x74a\x69l".to_string();
     assert!(s == t); // 非Copy値であってもPartialEqは参照で借用されるだけ。所有権は移動しない
     assert_eq!(format!("{} {}", s, t), "dovetail dovetail");
+
+    assert!(f64::is_nan(0.0/0.0));
+    assert_eq!(0.0/0.0 == 0.0/0.0, false);
+    assert_eq!(0.0/0.0 != 0.0/0.0, true);
 }
