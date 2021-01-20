@@ -76,6 +76,11 @@ fn main() {
     assert!(s == t); // 非Copy値であってもPartialEqは参照で借用されるだけ。所有権は移動しない
     assert_eq!(format!("{} {}", s, t), "dovetail dovetail");
 
+    // IEEE標準では個々のNaN値が他のNaN値と等価でないことを要請する。
+    // PartialEq（partial equivalence relation = 部分同値関係）は以下の3つのうち2つのみを満たす
+    // x == yならばy ==xも成立
+    // x == y && y == zならばx == zも成立
+    // x == xは真である
     assert!(f64::is_nan(0.0/0.0));
     assert_eq!(0.0/0.0 == 0.0/0.0, false);
     assert_eq!(0.0/0.0 != 0.0/0.0, true);
