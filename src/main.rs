@@ -110,4 +110,7 @@ fn main() {
     // 実装されたeq()/ne()が部分同値関係か完全同値関係かコンパイラからは分からないため
     // それぞれの動作はトレイトの宣言や#derive属性を書く実装者に委ねられている
     // 言語コアのi32はEqを実装するがf32はPartialEqしか実装していない
+
+    // PartialOrdトレイトを実装した型では「<」などで順序比較が可能
+    assert!(Interval { lower: 10, upper: 20 } < Interval { lower: 20, upper: 40});
 }
