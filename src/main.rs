@@ -2,6 +2,7 @@ use std::ops::Add;
 use std::ops::Neg;
 use std::ops::AddAssign;
 use std::cmp::PartialEq;
+use std::cmp::{Ordering, PartialOrd};
 
 #[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
@@ -56,6 +57,21 @@ impl<T> AddAssign for Complex<T>
 impl<T: PartialEq> PartialEq for Complex<T> {
     fn eq(&self, other: &Complex<T>) -> bool {
         self.re == other.re && self.im == other.im
+    }
+}
+
+#[derive(Debug, PartialEq)]
+struct Interval<T> {
+    lower: T, //inclusive(含まれる)
+    upper: T // exclusive(含まれない)
+}
+
+impl<T: PartialOrd> PartialOrd<Interval<T>> for Interval<T> {
+    fn partial_cmp(&self, other: &Interval<T>) -> Option<Ordering> {
+        if self == other { Some(Ordering::Equal) }
+        else if self.lower >= other.upper { Some(Ordering::Greater) }
+        else if self.upper <= other.lower { Some(Ordering::Less) }
+        else { None }
     }
 }
 
