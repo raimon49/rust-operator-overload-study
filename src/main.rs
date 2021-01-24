@@ -113,4 +113,6 @@ fn main() {
 
     // PartialOrdトレイトを実装した型では「<」などで順序比較が可能
     assert!(Interval { lower: 10, upper: 20 } < Interval { lower: 20, upper: 40});
+    assert!(Interval { lower: 7, upper: 8 } >= Interval { lower: 0, upper: 1});
+    assert!(Interval { lower: 7, upper: 8 } <= Interval { lower: 7, upper: 8});
 }
