@@ -115,4 +115,9 @@ fn main() {
     assert!(Interval { lower: 10, upper: 20 } < Interval { lower: 20, upper: 40});
     assert!(Interval { lower: 7, upper: 8 } >= Interval { lower: 0, upper: 1});
     assert!(Interval { lower: 7, upper: 8 } <= Interval { lower: 7, upper: 8});
+    // Interval同士が重なっている場合、どちらかが大きいという事にはならない実装
+    let left  = Interval { lower: 10, upper: 30 };
+    let right = Interval { lower: 20, upper: 40 };
+    assert!(!(left < right));
+    assert!(!(left >= right));
 }
