@@ -4,6 +4,7 @@ use std::ops::AddAssign;
 use std::cmp::PartialEq;
 use std::cmp::{Ordering, PartialOrd};
 use std::collections::HashMap;
+use std::ops::Index;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
@@ -131,4 +132,7 @@ fn main() {
     m.insert("億", 100000);
     assert_eq!(m["十"], 10);
     assert_eq!(m["千"], 1000);
+    // 上のインデックス式は、下の式と等価
+    assert_eq!(*m.index("十"), 10);
+    assert_eq!(*m.index("千"), 1000);
 }
