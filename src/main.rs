@@ -3,6 +3,7 @@ use std::ops::Neg;
 use std::ops::AddAssign;
 use std::cmp::PartialEq;
 use std::cmp::{Ordering, PartialOrd};
+use std::collections::HashMap;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
@@ -120,4 +121,14 @@ fn main() {
     let right = Interval { lower: 20, upper: 40 };
     assert!(!(left < right));
     assert!(!(left >= right));
+
+    // HashMap<&str, i32>がIndex<&str>を実装しているためm[i]で参照できる
+    let mut m = HashMap::new();
+    m.insert("十", 10);
+    m.insert("百", 100);
+    m.insert("千", 1000);
+    m.insert("万", 10000);
+    m.insert("億", 100000);
+    assert_eq!(m["十"], 10);
+    assert_eq!(m["千"], 1000);
 }
