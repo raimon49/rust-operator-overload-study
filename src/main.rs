@@ -135,4 +135,9 @@ fn main() {
     // 上のインデックス式は、下の式と等価
     assert_eq!(*m.index("十"), 10);
     assert_eq!(*m.index("千"), 1000);
+
+    let mut desserts = vec!["Howalon".to_string(),
+                            "Soan papdi".to_string()];
+    desserts[0].push_str(" (fictional)");
+    desserts[1].push_str(" (real)");
 }
