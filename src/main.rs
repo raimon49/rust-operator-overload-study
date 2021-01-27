@@ -5,6 +5,7 @@ use std::cmp::PartialEq;
 use std::cmp::{Ordering, PartialOrd};
 use std::collections::HashMap;
 use std::ops::Index;
+use std::ops::IndexMut;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Complex<T> {
@@ -136,8 +137,12 @@ fn main() {
     assert_eq!(*m.index("十"), 10);
     assert_eq!(*m.index("千"), 1000);
 
+    // IndexMutトレイトを実装していると暗黙的にindex_mut()メソッドを呼び出せる
     let mut desserts = vec!["Howalon".to_string(),
                             "Soan papdi".to_string()];
     desserts[0].push_str(" (fictional)");
     desserts[1].push_str(" (real)");
+    // 上のインデックス指定した文字列の追加は下のコードと等価
+    (*desserts.index_mut(0)).push_str(" (fictional)");
+    (*desserts.index_mut(1)).push_str(" (real)");
 }
