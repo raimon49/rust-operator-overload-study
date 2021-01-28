@@ -78,6 +78,28 @@ impl<T: PartialOrd> PartialOrd<Interval<T>> for Interval<T> {
     }
 }
 
+struct Image<P> {
+    width: usize,
+    pixels: Vec<P>
+}
+
+impl<P: Default + Copy> Image<P> {
+    fn new(width: usize, height: usize) -> Image<P> {
+        Image {
+            width,
+            pixels: vec![P::default(); width * height]
+        }
+    }
+}
+
+impl<P> std::ops::Index<usize> for Image<P> {
+    type Output = [P];
+    fn index(&self, row: usize) -> &[P] {
+        let start = row * self.width;
+        return &self.pixels[start .. start +  self.width];
+    }
+}
+
 fn main() {
     // std::ops::Addトレイトをスコープ内でuseすると
     // a + bをa.add(b)と関数呼び出しでも書ける
