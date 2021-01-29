@@ -78,6 +78,9 @@ impl<T: PartialOrd> PartialOrd<Interval<T>> for Interval<T> {
     }
 }
 
+// image[row][column] = ...;
+// 上記のように代入を可能にするIndex/IndexMutの実装コード
+
 struct Image<P> {
     width: usize,
     pixels: Vec<P>
