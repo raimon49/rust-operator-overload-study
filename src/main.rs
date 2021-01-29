@@ -100,6 +100,13 @@ impl<P> std::ops::Index<usize> for Image<P> {
     }
 }
 
+impl<P> std::ops::IndexMut<usize> for Image<P> {
+    fn index_mut(&mut self, row: usize) -> &mut [P] {
+        let start = row * self.width;
+        return &mut self.pixels[start .. start + self.width];
+    }
+}
+
 fn main() {
     // std::ops::Addトレイトをスコープ内でuseすると
     // a + bをa.add(b)と関数呼び出しでも書ける
